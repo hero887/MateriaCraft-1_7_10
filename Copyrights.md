@@ -29,4 +29,4 @@ Those who would like to use my mod in their own personal modpacks or for publicl
 
 DERIVATIVE WORKS/MODIFICATION
 
-This mod is provided freely and may be decompiled and modified for PRIVATE use, either with a decompiler or a bytecode editor. Public distribution of modified versions of this MOD require advance WRITTEN permission of the OWNER and may be subject to certain terms.
+This mod is provided freely and may be decompiled and modified for PRIVATE use, either with a decompiler or a bytecode editor. Public distribution of modified versions of this MOD require advance WRITTEN permission of the OWNER and may be subject to certain terms. 
