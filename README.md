@@ -1,8 +1,16 @@
 # MateriaCraft-1_7_10
-A Minecraft mod based primarily off Final Fantasy 7!
-Created by Hero887 - sole owner and author
+A Minecraft mod based primarily off of Final Fantasy 7!
+#Created by Hero887 - sole owner and author
 
-===TERMS AND CONDITIONS===
+SUPPORT & LEARN MORE
+=====================
+
+Help me develop this mod faster by becoming a Patron: http://www.patreon.com/hero887
+
+http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1292666-1-7-10-forge-wip-materiacraft-final-fantasy-mod
+
+SOURCE CODE & LICENSE
+=====================
 
 USED TERMS
 
