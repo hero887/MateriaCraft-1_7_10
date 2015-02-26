@@ -2,114 +2,144 @@ package com.uberverse.materiacraft.blocks;
 
 import java.util.Random;
 
-import com.uberverse.materiacraft.MateriaCraft;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
+
+import com.uberverse.materiacraft.MateriaCraft;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MCCrystalGrowth extends Block implements IGrowable
+/**
+ * QUESTION: Should I not extend BlockBush? If not, what code form Block Bush should
+ *  I copy and paste into here to get some of the characteristics I want for crystal growth but not
+ *  too plant like. For example, I don't want the crystal to require water near by to grow. 
+ */
+public class MCCrystalGrowth extends BlockBush //Note: I cut this out for now: implements IGrowable
 {
 
-	public MCCrystalGrowth(Material plants) {
-		super(Material.plants);
-		
-	}
-	public static final Block.SoundType soundTypeGravel = new Block.SoundType("gravel", 1.0F, 1.0F);
-	  
-	public String getBreakSound()
-       {
-           return "dig.glass";
-       }
+	protected int maxGrowthStage = 7;
 	
-	 public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+	 @SideOnly(Side.CLIENT)
+	    protected IIcon[] iIcon;
+
+	 /**
+	  * QUESTION: How can I code the CrystalGrowth class to require a stone pickaxe to "harvest" the crystal?
+	  * Basically I want the crystal to once fully matured to become like a solid block that needs to be mined
+	  * with a drop of the itemCrystal I want it to be (as specified in the blockNameOfTheCrystalHere class)
+	  */
+	    public MCCrystalGrowth()
 	    {
-	        return EnumPlantType.Cave;
+	     // Basic block setup
+	        setTickRandomly(true);
+	        float f = 0.5F;
+	        setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
+	        setHardness(3.0F);
+	        setResistance(5.0F);
+	        setLightLevel(0.5F);
+	        setStepSound(soundTypeGravel);
+	        disableStats();
+	        
 	    }
+	    
+	    /**
+	     * QUESTION: Will this code here work for the concept of when breaking the fully matured crystal
+	     * it will make a breaking glass noise?
+	     */
+	    public String getBreakSound()
+        {
+            return "dig.glass";
+        }
+	    
+	    //Amount of light emitted 
+	    protected int lightValue;
+	   //Flag if block should use the brightest neighbor light value as its own
+	    protected boolean useNeighborBrightness;
+	    //Indicates how many hits it takes to break a block.
+	    protected float blockHardness;
+	    //Indicates the block's resistance to explosions.
+	    protected float blockResistance;
 
-	    public Block getPlant(IBlockAccess world, int x, int y, int z)
+	    /**
+	     * is the block grass, dirt or farmland
+	     */
+	    protected boolean canPlaceBlockOn(Material parMaterial)
 	    {
-	        return this;
+	        return parMaterial == Material.rock;
 	    }
-
-	    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
+	    
+	    public void incrementGrowStage(World parWorld, Random parRand, int parX, int parY, int parZ)
 	    {
-	        return world.getBlockMetadata(x, y, z);
+	        int growStage = parWorld.getBlockMetadata(parX, parY, parZ) + 
+	              MathHelper.getRandomIntegerInRange(parRand, 2, 5);
+
+	        if (growStage > maxGrowthStage)
+	        {
+	         growStage = maxGrowthStage;
+	        }
+
+	        parWorld.setBlockMetadataWithNotify(parX, parY, parZ, growStage, 2);
 	    }
-	@SideOnly(Side.CLIENT)
-	private IIcon [] iconArray;
-	
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons (IIconRegister iconRegister){
-		this.iconArray = new IIcon[8];
-		
-		for (int i = 0; i < this.iconArray.length; i++) {
-			this.iconArray[i] = iconRegister.registerIcon(MateriaCraft.MODID + ":" + this.getUnlocalizedName().substring(5) + (i + 1));
-		}
-	}
-	
-	public IIcon getIcon(int side, int metadata) {
-		if (metadata < 7){
-			if (metadata == 6) {
-				metadata = 5;
-			}
-			
-			return this.iconArray[metadata >> 1];
-		}
-		
-		return this.iconArray[3];
-	}
-	
-	public int quantityDropped (Random random) {
-		return 1;
-	}
-	
-	protected Item func_149866_i() {
-		return MateriaCraft.itemMakoPowder;
-	}
-	
-	protected Item func_149865_P() {
-		return MateriaCraft.itemMakoCrystal;
-	}
-	
-    protected boolean canPlaceBlockOn(Block p_149854_1_)
-    {
-        return p_149854_1_ == Blocks.stone;
-    }
-    
-    public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {}
+	    
+	    @Override
+	    public Item getItemDropped(int p_149650_1_, Random parRand, int parFortune)
+	    {
+	        return Item.getItemFromBlock(this);
+	    }
+	    
+	    /**QUESTION: How do I render the crystal to look like Redstone dust at first stage & then grow up 
+	     * as a crop after that w/the "crossed squares? Or must I choose one or the other?
+	     */
+	    @Override
+	    public int getRenderType()
+	    {
+	        return 1; // blocks are 0, "crossed squares" is 1, torch is 2
+	    }
+	    
+	    /**
+	     * Ticks the block if it's been scheduled
+	     */
+	    @Override
+	    public void updateTick(World parWorld, int parX, int parY, int parZ, Random parRand)
+	    {
+	        super.updateTick(parWorld, parX, parY, parZ, parRand);
+	        int growStage = parWorld.getBlockMetadata(parX, parY, parZ) + 1;
 
-    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {}
+	        if (growStage > 7)
+	        {
+	            growStage = 7;
+	        }
 
+	        parWorld.setBlockMetadataWithNotify(parX, parY, parZ, growStage, 2);
+	    }
+	    
+	  /**func_149851_a returns true if bonemeal is allowed, false otherwise.
 	@Override
-	public boolean func_149851_a(World p_149851_1_, int p_149851_2_,
+	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, 
 			int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
-		// TODO Auto-generated method stub
+		//TODO Auto-generated method stub
 		return false;
 	}
 
+	//func_149852_a returns true at the same time bonemeal is used if conditions for a growth-tick are acceptable.
 	@Override
 	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_,
 			int p_149852_3_, int p_149852_4_, int p_149852_5_) {
-		// TODO Auto-generated method stub
+		//TODO Auto-generated method stub
 		return false;
 	}
 
+	 //func_149853_b processes the actual growth-tick logic, which is usually increasing metadata or replacing the block.
 	@Override
 	public void func_149853_b(World p_149853_1_, Random p_149853_2_,
 			int p_149853_3_, int p_149853_4_, int p_149853_5_) {
-		// TODO Auto-generated method stub
-		
+		//TODO Auto-generated method stub
+		*/
 	}
-
-}
+	

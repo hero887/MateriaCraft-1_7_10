@@ -1,11 +1,13 @@
 package com.uberverse.materiacraft;
 
+import com.uberverse.materiacraft.blocks.BlockRedMakoCyrstal;
 import com.uberverse.materiacraft.blocks.MCCrystalGrowth;
-import com.uberverse.materiacraft.item.ItemCrystalSeed;
 import com.uberverse.materiacraft.item.ItemMakoPowder;
+import com.uberverse.materiacraft.item.ItemRedCrystalSolute;
+import com.uberverse.materiacraft.item.ItemRedMakoCrystal;
 import com.uberverse.materiacraft.item.ItemZackSword;
-
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRedstoneTorch;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -35,9 +37,13 @@ public class MateriaCraft
 	public static Item itemMakoPowder;
 	
 	//Crop/Crystal
-	public static Item crystalMakoSeed;
-	public static Block crystalMakoGrowing;
-	public static Item itemMakoCrystal;
+	/**
+	 * public static Item itemMakoSeedCrystal;
+	 * public static Block blockMakoCrystal;
+	 */
+	public static Item itemRedMakoSolute;
+	public static Block blockRedMakoCrystal;
+	public static Item itemRedMakoCrystal;
 
 	public static final Item.ToolMaterial steelToolMaterial = EnumHelper.addToolMaterial("steelToolMaterial", 3, 1000, 7.0F, 2.0F, 8);
 
@@ -52,10 +58,15 @@ public class MateriaCraft
 		
 		itemMakoPowder = new ItemMakoPowder().setUnlocalizedName("MakoPowder").setTextureName(MODID + ":MakoPowder").setCreativeTab(tabMateriaCraft);
 		
-		//Crops
-		crystalMakoGrowing = new MCCrystalGrowth (null).setBlockName("GrowingMakoCrystal").setBlockTextureName(MODID + ":crystalMakoGrowing");
-		crystalMakoSeed = new ItemCrystalSeed(crystalMakoGrowing, Material.rock).setUnlocalizedName("MakoSeedCrystal").setTextureName(MODID + ":MakoSeedCrystal").setCreativeTab(tabMateriaCraft);
-		itemMakoCrystal = new Item().setUnlocalizedName("MakoCrystal").setTextureName(MODID + ":MakoCrystal").setCreativeTab(tabMateriaCraft);
+		//Crops/Crystals
+		/**
+		 *blockMakoCrystal = new MCCrystalGrowth();
+		 *itemMakoSolute = new ItemCrystalSeed(blockMakoCrystal, Material.rock);
+		 *EXAMPLE paramaters for block:.setBlockName("blockname").setCreativeTab(tabMateriaCraft).setBlockTextureName(MODID +":blockname"));
+		 */
+		itemRedMakoSolute = new ItemRedCrystalSolute(0, 0, null, null).setUnlocalizedName("itemRedMakoSolute").setTextureName(MODID + ":redMakoSolute").setCreativeTab(tabMateriaCraft);
+		blockRedMakoCrystal = new BlockRedMakoCyrstal().setBlockName("blockRedMakoCrystal").setBlockTextureName(MODID + ":redMakoCrystal_stage_0");
+		itemRedMakoCrystal = new ItemRedMakoCrystal().setUnlocalizedName("itemRedMakoCrystal").setTextureName(MODID + ":redMakoCrystal").setCreativeTab(tabMateriaCraft);
 		
 		//Register
 		//Items
@@ -63,9 +74,10 @@ public class MateriaCraft
 		GameRegistry.registerItem(itemZackSword, itemZackSword.getUnlocalizedName().substring(5));
 		
 		//Crystals/Crops
-		GameRegistry.registerItem(crystalMakoSeed, "MakoSeedCrystal");
-		GameRegistry.registerItem(itemMakoCrystal, "MakoCrystal");
-		GameRegistry.registerBlock(crystalMakoGrowing, "GrowingMakoCrystal");
+		//GameRegistry.registerItem(itemMakoSeedCrystal, "MakoSeedCrystal");
+		//GameRegistry.registerBlock(blockMakoCrystal, "GrowingMakoCrystal");
+		GameRegistry.registerItem(itemRedMakoCrystal, "RedMakoCrystal");
+		
 	}
 	
 	@EventHandler
