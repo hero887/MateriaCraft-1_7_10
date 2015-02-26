@@ -1,5 +1,6 @@
 package com.uberverse.materiacraft.blocks;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.uberverse.materiacraft.MateriaCraft;
@@ -7,17 +8,21 @@ import com.uberverse.materiacraft.MateriaCraft;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 public class BlockRedMakoCyrstal extends MCCrystalGrowth {
 
-	public BlockRedMakoCyrstal(){
-		
+    public BlockRedMakoCyrstal(Material rock) {
+		super (Material.rock);
 	}
 
-    /**
+	/**
      * Returns the quantity of items to drop on block destruction.
      */
     @Override
@@ -34,6 +39,36 @@ public class BlockRedMakoCyrstal extends MCCrystalGrowth {
         return (MateriaCraft.itemRedMakoCrystal);
     }
     
+    /**
+     * Some Vanilla code found on item drops. Not sure if I should use it or not yet. Experimenting.
+     * @return
+     
+    protected Item func_149866_i()
+    {
+        return Items.wheat_seeds;
+    }
+    
+    @Override
+    public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
+    {
+        ArrayList<ItemStack> ret = super.getDrops(world, x, y, z, metadata, fortune);
+
+        if (metadata >= 7)
+        {
+            for (int i = 0; i < 3 + fortune; ++i)
+            {
+                if (world.rand.nextInt(15) <= metadata)
+                {
+                    ret.add(new ItemStack(this.func_149866_i(), 1, 0));
+                }
+            }
+        }
+
+        return ret;
+    }
+    */
+    
+    //TO-DO: Make the textures stages
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister parIIconRegister)

@@ -47,6 +47,10 @@ public class MateriaCraft
 
 	public static final Item.ToolMaterial steelToolMaterial = EnumHelper.addToolMaterial("steelToolMaterial", 3, 1000, 7.0F, 2.0F, 8);
 
+	/**TO-DO: Make Mod.init classes for items, blocks, entities, structures etc.
+	 * see here for reference: 
+	 * https://github.com/TheXFactor117/Ascension/blob/master/forge/src/main/java/com/thexfactor117/ascension/Ascension.java
+	 */
 
 	@EventHandler
 	public void preInit (FMLPreInitializationEvent event){
@@ -65,7 +69,7 @@ public class MateriaCraft
 		 *EXAMPLE paramaters for block:.setBlockName("blockname").setCreativeTab(tabMateriaCraft).setBlockTextureName(MODID +":blockname"));
 		 */
 		itemRedMakoSolute = new ItemRedCrystalSolute(0, 0, null, null).setUnlocalizedName("itemRedMakoSolute").setTextureName(MODID + ":redMakoSolute").setCreativeTab(tabMateriaCraft);
-		blockRedMakoCrystal = new BlockRedMakoCyrstal().setBlockName("blockRedMakoCrystal").setBlockTextureName(MODID + ":redMakoCrystal_stage_0");
+		blockRedMakoCrystal = new BlockRedMakoCyrstal(Material.rock).setBlockName("blockRedMakoCrystal").setBlockTextureName(MODID + ":redMakoCrystal_stage_0");
 		itemRedMakoCrystal = new ItemRedMakoCrystal().setUnlocalizedName("itemRedMakoCrystal").setTextureName(MODID + ":redMakoCrystal").setCreativeTab(tabMateriaCraft);
 		
 		//Register
