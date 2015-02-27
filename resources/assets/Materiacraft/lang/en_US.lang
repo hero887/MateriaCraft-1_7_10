@@ -1,0 +1,8 @@
+itemGroup.tabMateriaCraft=MateriaCraft
+
+item.itemZackSword.name=Buster Sword
+item.itemMakoPowder.name=Mako Powder
+item.itemRedMakoCrystal.name=Red Mako Crystal
+item.itemRedMakoSolute.nam=Red Mako Solute
+
+tile.blockRedMakoCrystal.name=Growing Red Mako Crystal

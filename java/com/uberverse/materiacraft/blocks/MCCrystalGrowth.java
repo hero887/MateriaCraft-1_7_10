@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *  I copy and paste into here to get some of the characteristics I want for crystal growth but not
  *  too plant like. For example, I don't want the crystal to require water near by to grow. 
  */
-public class MCCrystalGrowth extends Block //implements IGrowable implements IPlantable
+public class MCCrystalGrowth extends Block
 {
 
 	protected int maxGrowthStage = 7;
@@ -299,27 +299,6 @@ public class MCCrystalGrowth extends Block //implements IGrowable implements IPl
 	        return this.field_149867_a[p_149691_2_];
 	    }
 	    */
-
-	    /**
-		@Override
-		public EnumPlantType getPlantType(IBlockAccess world, int x, int y,
-				int z) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public Block getPlant(IBlockAccess world, int x, int y, int z) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		@Override
-		public int getPlantMetadata(IBlockAccess world, int x, int y, int z) {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-		*/
 	    
 	    /**
 	     * Unsure if I need to use this code yet.
@@ -334,28 +313,5 @@ public class MCCrystalGrowth extends Block //implements IGrowable implements IPl
         }
     }
 	     */
-	    
-	  /**func_149851_a returns true if bonemeal is allowed, false otherwise.
-	@Override
-	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, 
-			int p_149851_3_, int p_149851_4_, boolean p_149851_5_) {
-		//TODO Auto-generated method stub
-		return false;
-	}
-
-	//func_149852_a returns true at the same time bonemeal is used if conditions for a growth-tick are acceptable.
-	@Override
-	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_,
-			int p_149852_3_, int p_149852_4_, int p_149852_5_) {
-		//TODO Auto-generated method stub
-		return false;
-	}
-
-	 //func_149853_b processes the actual growth-tick logic, which is usually increasing metadata or replacing the block.
-	@Override
-	public void func_149853_b(World p_149853_1_, Random p_149853_2_,
-			int p_149853_3_, int p_149853_4_, int p_149853_5_) {
-		//TODO Auto-generated method stub
-		*/
 	}
 	

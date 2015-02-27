@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  * is bad, I plan to make other solute mixtures have better status effects. 
  *
  */
-public class MCCrystalSolute extends ItemFood implements IPlantable
+public class MCCrystalSolute extends ItemFood //implements IPlantable
 {
     private final Block theBlockPlant;
     /**
@@ -27,13 +27,30 @@ public class MCCrystalSolute extends ItemFood implements IPlantable
      */
     private final Block soilId;
 
-    public MCCrystalSolute(int parHealAmount, float parSaturationModifier, 
+    public MCCrystalSolute(int parHealAmount, float parSaturationModifier, boolean wolf,
           Block parBlockPlant, Block parSoilBlock)
     {
         super(parHealAmount, parSaturationModifier, false);
         theBlockPlant = parBlockPlant;
         soilId = parSoilBlock;
     }
+    
+    /**
+    @Override
+    protected void onFoodEaten(ItemStack i, World w, EntityPlayer p) {
+        if(!w.isRemote) {
+            p.addPotionEffect(new PotionEffect(Potion.absorption.id, 2400, 0));
+
+        if(op) {
+                p.addPotionEffect(new PotionEffect(Potion.regeneration.id, 600, 4));
+                p.addPotionEffect(new PotionEffect(Potion.resistance.id, 6000, 0));
+                p.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 6000, 0));
+            }
+        } else {
+            super.onFoodEaten(i, w, p);
+        }
+    }
+    */
 
     @Override
     public boolean onItemUse(ItemStack parItemStack, EntityPlayer parPlayer, 
@@ -45,6 +62,11 @@ public class MCCrystalSolute extends ItemFood implements IPlantable
         {
             return false;
         }
+		return false;
+    }
+}
+        
+        /**
         // check if player has capability to edit
         else if (parPlayer.canPlayerEdit(parX, parY+1, parZ, par7, parItemStack))
         {
@@ -70,11 +92,10 @@ public class MCCrystalSolute extends ItemFood implements IPlantable
             return false;
         }
     }
-
     @Override
     public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
     {
-        return EnumPlantType.Crop;
+        return EnumPlantType.Cave;
     }
 
     @Override
@@ -93,5 +114,5 @@ public class MCCrystalSolute extends ItemFood implements IPlantable
     {
         return soilId;
     }
-
-}
+*/
+       

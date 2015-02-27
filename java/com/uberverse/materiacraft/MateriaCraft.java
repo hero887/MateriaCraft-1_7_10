@@ -41,8 +41,8 @@ public class MateriaCraft
 	 * public static Item itemMakoSeedCrystal;
 	 * public static Block blockMakoCrystal;
 	 */
-	public static Item itemRedMakoSolute;
 	public static Block blockRedMakoCrystal;
+	public static Item itemRedMakoSolute;
 	public static Item itemRedMakoCrystal;
 
 	public static final Item.ToolMaterial steelToolMaterial = EnumHelper.addToolMaterial("steelToolMaterial", 3, 1000, 7.0F, 2.0F, 8);
@@ -58,9 +58,9 @@ public class MateriaCraft
 		
 		//Initialize New Things
 		//Items
-		itemZackSword = new ItemZackSword(steelToolMaterial).setUnlocalizedName("ItemZackSword").setTextureName(MODID + ":ZackSword").setCreativeTab(tabMateriaCraft);
+		itemZackSword = new ItemZackSword(steelToolMaterial).setUnlocalizedName("ItemZackSword").setTextureName(MODID + ":zackSword").setCreativeTab(tabMateriaCraft);
 		
-		itemMakoPowder = new ItemMakoPowder().setUnlocalizedName("MakoPowder").setTextureName(MODID + ":MakoPowder").setCreativeTab(tabMateriaCraft);
+		itemMakoPowder = new ItemMakoPowder().setUnlocalizedName("MakoPowder").setTextureName(MODID + ":makoPowder").setCreativeTab(tabMateriaCraft);
 		
 		//Crops/Crystals
 		/**
@@ -68,8 +68,8 @@ public class MateriaCraft
 		 *itemMakoSolute = new ItemCrystalSeed(blockMakoCrystal, Material.rock);
 		 *EXAMPLE paramaters for block:.setBlockName("blockname").setCreativeTab(tabMateriaCraft).setBlockTextureName(MODID +":blockname"));
 		 */
-		itemRedMakoSolute = new ItemRedCrystalSolute(0, 0, null, null).setUnlocalizedName("itemRedMakoSolute").setTextureName(MODID + ":redMakoSolute").setCreativeTab(tabMateriaCraft);
 		blockRedMakoCrystal = new BlockRedMakoCyrstal(Material.rock).setBlockName("blockRedMakoCrystal").setBlockTextureName(MODID + ":redMakoCrystal_stage_0");
+		itemRedMakoSolute = new ItemRedCrystalSolute(0, 0.0F, false, null, null).setUnlocalizedName("itemRedMakoSolute").setTextureName(MODID + ":redMakoSolute").setCreativeTab(tabMateriaCraft);
 		itemRedMakoCrystal = new ItemRedMakoCrystal().setUnlocalizedName("itemRedMakoCrystal").setTextureName(MODID + ":redMakoCrystal").setCreativeTab(tabMateriaCraft);
 		
 		//Register
@@ -80,6 +80,7 @@ public class MateriaCraft
 		//Crystals/Crops
 		//GameRegistry.registerItem(itemMakoSeedCrystal, "MakoSeedCrystal");
 		//GameRegistry.registerBlock(blockMakoCrystal, "GrowingMakoCrystal");
+		GameRegistry.registerItem(itemRedMakoSolute, "RedMakoSolute");
 		GameRegistry.registerItem(itemRedMakoCrystal, "RedMakoCrystal");
 		
 	}
