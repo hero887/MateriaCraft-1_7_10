@@ -6,7 +6,7 @@ import net.uberverse.materiacraft.api.MCCrystalBase;
 import net.uberverse.materiacraft.blocks.BlockMakoCrystal;
 
 public class TileEntityMakoBlock {
-
+/**
 	public ItemStack[] items;;
 	public TileEntityMakoBlock() {
 		super();
@@ -33,5 +33,5 @@ public class TileEntityMakoBlock {
 	public TileEntityMakoCrystal getCropTile(World world, int x, int y, int z) {
 		return world.getTileEntity(x, y + 1, z) != null && world.getTileEntity(x, y + 1, z) instanceof TileEntityMakoCrystal ? (TileEntityMakoCrystal) world.getTileEntity(x, y + 1, z) : null;
 	}
-
+*/
 }

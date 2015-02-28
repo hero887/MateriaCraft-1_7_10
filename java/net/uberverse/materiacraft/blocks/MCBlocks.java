@@ -22,6 +22,8 @@ public class MCBlocks {
 		
 	}
 	/**
+	 * Should move this to the Proxies
+	 * 
 	private static void registerTileEntity() {
 
 		GameRegistry.registerTileEntity(TileEntityMakoBlock.class, "makoBlock");
@@ -32,7 +34,7 @@ public class MCBlocks {
 	
 	public static void regsiterBlocks() {
 		
-	GameRegistry.registerBlock(crystalCrop, "Crystal Crop");
+	GameRegistry.registerBlock(crystalCrop, "Block Mako Crystal");
 	registerBlock(makoBlock, "Mako Block", "mako_block");
 	
 	}

@@ -17,13 +17,6 @@ public abstract class MCSoluteBase extends Item implements ISolute {
 		this.itemIcon = icon.registerIcon(ModInfo.modid + ":seed");
 	}
 
-	/**
-	 * Callback for item usage. If the item does something special on right
-	 * clicking, he will have one of those. Return True if something happen and
-	 * false if it don't. This is for ITEMS, not BLOCKS
-	 */
-	
-	/**
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
 		ItemStack seeds = stack.copy();
@@ -38,7 +31,7 @@ public abstract class MCSoluteBase extends Item implements ISolute {
 		}
 		return false;
 	}
-	*/
+
 }
 
 

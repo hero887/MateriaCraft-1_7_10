@@ -39,7 +39,7 @@ public class TileEntityMakoCrystal extends TileEntity {
 		this.ticksgrown = ticksgrown;
 
 	}
-
+/**
 	public boolean growPlant(World world, boolean night) {
 		if (world != null)
 			if (world.getBlock(xCoord, yCoord, zCoord) instanceof MCCrystalBase) {
@@ -47,6 +47,7 @@ public class TileEntityMakoCrystal extends TileEntity {
 			}
 		return false;
 	}
+	*/
 
 	@Override
 	public boolean canUpdate() {
