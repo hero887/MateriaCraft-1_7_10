@@ -1,16 +1,16 @@
 [
 {
-  "mc": "MateriaCraft",
+  "modid": "materiacraft",
   "name": "MateriaCraft",
-  "description": "A Final Fantasy based mod",
+  "description": "Mod based off Final Fantasy!",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "uberverse.net": "",
+  "url": "",
   "updateUrl": "",
   "authorList": ["Hero887"],
-  "credits": "To my YouTube subs and Patrons!",
-  "logoFile": "assets/MC/MateriaCraftLogo.png",
+  "credits": "DarKnight_0_9, B0BGary, & Jaredlll08",
+  "logoFile": "MCLogo.png",
   "screenshots": [],
-  "dependencies": [forge]
+  "dependencies": []
 }
 ]

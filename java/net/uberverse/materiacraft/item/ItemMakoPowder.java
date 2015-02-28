@@ -1,4 +1,4 @@
-package com.uberverse.materiacraft.item;
+package net.uberverse.materiacraft.item;
 
 import net.minecraft.item.Item;
 
